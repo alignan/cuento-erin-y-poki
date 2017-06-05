@@ -1,5 +1,5 @@
 BUILD = build
-BOOKNAME = erin-poky
+BOOKNAME = erin-y-poki
 TITLE = titulo.txt
 METADATA = metadata.yaml
 CHAPTERS =  ch/00.md ch/01.md ch/02.md ch/03.md ch/04.md ch/05.md ch/06.md \
