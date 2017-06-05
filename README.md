@@ -13,8 +13,8 @@ Lo más fácil es instalar [MacTex](http://tug.org/mactex), sin embargo requie
 Primero descargue el código fuente:
 
 ````
-git clone XXX
-cd XXX
+git clone https://github.com/alignan/cuento-erin-y-poki
+cd cuento-erin-y-poki
 ````
 
 Y luego compile:
