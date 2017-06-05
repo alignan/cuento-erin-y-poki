@@ -10,6 +10,9 @@ LATEX_CLASS = book
 CSS_STYLE = stylesheet.css
 TEMPLATE_PDF = default.pdf
 
+LANG = es-ES
+PANDOC_VAR = -V lang=$(LANG)
+
 all: book
 
 book: epub html pdf
@@ -23,14 +26,14 @@ pdf:  $(BUILD)/pdf/$(BOOKNAME).pdf
 
 $(BUILD)/epub/$(BOOKNAME).epub: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/epub
-	pandoc $(TOC) -S --epub-metadata=$(METADATA) --epub-cover-image=$(COVER_IMAGE) -o $@ $^
+	pandoc $(TOC) $(PANDOC_VAR) -S --epub-metadata=$(METADATA) --epub-cover-image=$(COVER_IMAGE) -o $@ $^
 
 $(BUILD)/html/$(BOOKNAME).html: $(CHAPTERS)
 	mkdir -p $(BUILD)/html
-	pandoc $(TOC) --standalone --to=html5 -o $@ $^
+	pandoc $(TOC) $(PANDOC_VAR) --standalone --to=html5 -o $@ $^
 
 $(BUILD)/pdf/$(BOOKNAME).pdf: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/pdf
-	pandoc $(TOC) --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) --template=$(TEMPLATE_PDF) -o $@ $^
+	pandoc $(TOC) $(PANDOC_VAR) --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) --template=$(TEMPLATE_PDF) -o $@ $^
 
 .PHONY: all book clean epub html pdf
