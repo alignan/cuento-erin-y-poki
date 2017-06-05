@@ -8,6 +8,7 @@ TOC = --toc --toc-depth=2
 COVER_IMAGE = img/cover.jpg
 LATEX_CLASS = book
 CSS_STYLE = stylesheet.css
+TEMPLATE_PDF = default.pdf
 
 all: book
 
@@ -30,6 +31,6 @@ $(BUILD)/html/$(BOOKNAME).html: $(CHAPTERS)
 
 $(BUILD)/pdf/$(BOOKNAME).pdf: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/pdf
-	pandoc $(TOC) --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) -o $@ $^
+	pandoc $(TOC) --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) --template=$(TEMPLATE_PDF) -o $@ $^
 
 .PHONY: all book clean epub html pdf
