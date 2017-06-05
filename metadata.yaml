@@ -1,0 +1,15 @@
+---
+cover-image: img/cover.jpg
+stylesheet: stylesheet.css
+title:
+- type: main
+  text: Erin y Poki en el otro lado del Espejo
+- type: subtitle
+  text: Una aventura de cumpleaños
+creator:
+- role: author
+  text: Antonio Liñan Colina
+- role: editor
+  text: Antonio Liñan Colina
+publisher: Self-published
+rights:  (c) 2017 Antonio Liñan Colina, CC BY-NC
