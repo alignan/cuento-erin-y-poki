@@ -2,7 +2,8 @@ BUILD = build
 BOOKNAME = erin-poky
 TITLE = titulo.txt
 METADATA = metadata.yaml
-CHAPTERS =  00.md 01.md 02.md 03.md 04.md 05.md 06.md 07.md 08.md 09.md 10.md
+CHAPTERS =  ch/00.md ch/01.md ch/02.md ch/03.md ch/04.md ch/05.md ch/06.md \
+            ch/07.md ch/08.md ch/09.md ch/10.md
 TOC = --toc --toc-depth=2
 COVER_IMAGE = img/cover.jpg
 LATEX_CLASS = book
@@ -17,7 +18,7 @@ clean:
 
 epub: $(BUILD)/epub/$(BOOKNAME).epub
 html: $(BUILD)/html/$(BOOKNAME).html
-pdf: $(BUILD)/pdf/$(BOOKNAME).pdf 
+pdf:  $(BUILD)/pdf/$(BOOKNAME).pdf 
 
 $(BUILD)/epub/$(BOOKNAME).epub: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/epub
