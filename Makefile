@@ -3,7 +3,7 @@ BOOKNAME = erin-y-poki
 TITLE = titulo.txt
 METADATA = metadata.yaml
 CHAPTERS =  ch/00.md ch/01.md ch/02.md ch/03.md ch/04.md ch/05.md ch/06.md \
-            ch/07.md ch/08.md ch/09.md ch/10.md
+            ch/07.md ch/08.md ch/09.md ch/10.md ch/11.md
 TOC = --toc --toc-depth=2
 COVER_IMAGE = img/cover.jpg
 LATEX_CLASS = book
