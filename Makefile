@@ -10,8 +10,8 @@ CSS_STYLE = stylesheet.css
 TEMPLATE_PDF = mybook.latex
 FORCE_DATA_DIR = --data-dir=$(CURDIR)
 
-LANG = es-ES
-PANDOC_VAR = -V lang=$(LANG)
+PANDOC_VAR = -V
+PANDOC_VAR += lang=es-ES
 
 all: book
 
