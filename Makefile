@@ -18,7 +18,7 @@ all: book
 book: epub html pdf
 
 clean:
-	rm -r $(BUILD)
+	rm -rf $(BUILD)
 
 epub: $(BUILD)/epub/$(BOOKNAME).epub
 html: $(BUILD)/html/$(BOOKNAME).html
