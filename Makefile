@@ -3,11 +3,11 @@ BOOKNAME = erin-y-poki
 TITLE = titulo.txt
 METADATA = metadata.yaml
 CHAPTERS =  ch/00.md ch/01.md ch/02.md ch/03.md ch/04.md ch/05.md ch/06.md \
-            ch/07.md ch/08.md ch/09.md ch/10.md ch/11.md
+            ch/07.md ch/08.md ch/09.md ch/10.md ch/11.md ch/12.md
 COVER_IMAGE = img/cover.jpg
 LATEX_CLASS = book
 CSS_STYLE = stylesheet.css
-TEMPLATE_PDF = mybook.latex
+TEMPLATE_PDF = templates/mybook.latex
 FORCE_DATA_DIR = --data-dir=$(CURDIR)
 
 PANDOC_VAR = -V
@@ -34,6 +34,6 @@ $(BUILD)/html/$(BOOKNAME).html: $(TITLE) $(CHAPTERS)
 
 $(BUILD)/pdf/$(BOOKNAME).pdf: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/pdf
-	pandoc $(PANDOC_VAR) --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) $(FORCE_DATA_DIR) --template=$(TEMPLATE_PDF) -o $@ $^
+	pandoc $(PANDOC_VAR) -fmarkdown-implicit_figures --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) $(FORCE_DATA_DIR) --template=$(TEMPLATE_PDF) -o $@ $^
 
 .PHONY: all book clean epub html pdf
