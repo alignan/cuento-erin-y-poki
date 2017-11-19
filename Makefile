@@ -10,8 +10,8 @@ CSS_STYLE = stylesheet.css
 TEMPLATE_PDF = templates/mybook.latex
 FORCE_DATA_DIR = --data-dir=$(CURDIR)
 
-PANDOC_VAR = -V
-PANDOC_VAR += lang=es-ES
+PANDOC_LANG = -V lang=es-ES
+PANDOC_PDF_SIZE = -V geometry:paperwidth=6in -V geometry:paperheight=9in -V geometry:margin=.5in
 
 all: book
 
@@ -26,14 +26,14 @@ pdf:  $(BUILD)/pdf/$(BOOKNAME).pdf
 
 $(BUILD)/epub/$(BOOKNAME).epub: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/epub
-	pandoc $(PANDOC_VAR) -S --epub-metadata=$(METADATA) --epub-cover-image=$(COVER_IMAGE) -o $@ $^
+	pandoc $(PANDOC_LANG) -S --epub-metadata=$(METADATA) --epub-cover-image=$(COVER_IMAGE) -o $@ $^
 
 $(BUILD)/html/$(BOOKNAME).html: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/html
-	pandoc $(PANDOC_VAR) --standalone --to=html5 -o $@ $^
+	pandoc $(PANDOC_LANG) --standalone --to=html5 -o $@ $^
 
 $(BUILD)/pdf/$(BOOKNAME).pdf: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/pdf
-	pandoc $(PANDOC_VAR) -fmarkdown-implicit_figures --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) $(FORCE_DATA_DIR) --template=$(TEMPLATE_PDF) -o $@ $^
+	pandoc $(PANDOC_LANG) $(PANDOC_PDF_SIZE) -fmarkdown-implicit_figures --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) $(FORCE_DATA_DIR) --template=$(TEMPLATE_PDF) -o $@ $^
 
 .PHONY: all book clean epub html pdf
