@@ -13,6 +13,9 @@ FORCE_DATA_DIR = --data-dir=$(CURDIR)
 PANDOC_LANG = -V lang=es-ES
 PANDOC_PDF_SIZE = -V geometry:paperwidth=6in -V geometry:paperheight=9in -V geometry:margin=.5in
 
+# https://alvinalexander.com/macos/list-xetex-xelatex-fonts-available-mactex
+PANDOC_FONT = -V mainfont=Monaco
+
 all: book
 
 book: epub html pdf
@@ -34,6 +37,6 @@ $(BUILD)/html/$(BOOKNAME).html: $(TITLE) $(CHAPTERS)
 
 $(BUILD)/pdf/$(BOOKNAME).pdf: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/pdf
-	pandoc $(PANDOC_LANG) $(PANDOC_PDF_SIZE) -fmarkdown-implicit_figures --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) $(FORCE_DATA_DIR) --template=$(TEMPLATE_PDF) -o $@ $^
+	pandoc $(PANDOC_LANG) $(PANDOC_PDF_SIZE) $(PANDOC_FONT) -fmarkdown-implicit_figures --latex-engine=xelatex -V documentclass=$(LATEX_CLASS) $(FORCE_DATA_DIR) --template=$(TEMPLATE_PDF) -o $@ $^
 
 .PHONY: all book clean epub html pdf
